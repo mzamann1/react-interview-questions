@@ -1,0 +1,730 @@
+/* Main container styles */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+}
+
+.App h1 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.app-description {
+  color: #4a5568;
+  margin-bottom: 2rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.App span {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-explorer {
+  min-width: 450px;
+  min-height: 500px;
+  border: none;
+  border-radius: 12px;
+  padding: 24px;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.file-explorer:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.file-explorer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.file-explorer-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header-actions .btn {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-actions .btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-actions svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Button styles */
+.add-root-btn, .add-file-root-btn, .import-btn, .refresh-btn {
+  width: 40px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon, .refresh-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-root-btn {
+  background-color: #4299e1;
+}
+
+.add-root-btn:hover {
+  background-color: #3182ce;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-file-root-btn {
+  background-color: #38a169;
+}
+
+.add-file-root-btn:hover {
+  background-color: #2f855a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.import-btn {
+  background-color: #805ad5;
+}
+
+.import-btn:hover {
+  background-color: #6b46c1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-btn {
+  background-color: #ed8936;
+}
+
+.refresh-btn:hover {
+  background-color: #dd6b20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-icon {
+  display: inline-block;
+  animation: spin 2s linear infinite paused;
+}
+
+.refresh-btn:hover .refresh-icon {
+  animation-play-state: running;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.file-system-item {
+  margin: 8px 0;
+  transition: all 0.2s ease;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.item-header:hover {
+  background-color: #f7fafc;
+  border-color: #e2e8f0;
+}
+
+.item-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.95rem;
+  color: #4a5568;
+}
+
+.item-text {
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.item-text:hover {
+  background-color: rgba(66, 153, 225, 0.1);
+}
+
+.item-text::after {
+  content: '✎';
+  position: absolute;
+  right: -20px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: #4299e1;
+}
+
+.item-text:hover::after {
+  opacity: 0.7;
+  transform: translateX(5px);
+}
+
+/* Enhanced input styles for rename */
+.item-name form {
+  margin: 0;
+  padding: 0;
+}
+
+.item-name input {
+  background-color: white;
+  border: 2px solid #4299e1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #2d3748;
+  width: 200px;
+  transition: all 0.2s ease;
+}
+
+.item-name input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  border-color: #3182ce;
+}
+
+/* Add animation for rename transition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.item-name form {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Tooltip for rename instruction */
+.item-name span[title] {
+  cursor: text;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.item-header:hover .icon {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Item action buttons */
+.item-actions {
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.item-header:hover .item-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-file-btn {
+  background-color: #4299e1;
+}
+
+.add-file-btn:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-folder-btn {
+  background-color: #48bb78;
+}
+
+.add-folder-btn:hover {
+  background-color: #38a169;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-btn {
+  background-color: #f56565;
+}
+
+.delete-btn:hover {
+  background-color: #e53e3e;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Delete confirmation styles */
+.delete-confirmation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff5f5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #fed7d7;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.warning-text {
+  color: #e53e3e;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.confirm-delete, .cancel-delete {
+  width: 24px;
+  height: 24px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0;
+}
+
+.confirm-delete {
+  background-color: #38a169;
+}
+
+.confirm-delete:hover {
+  background-color: #2f855a;
+  transform: translateY(-1px);
+}
+
+.cancel-delete {
+  background-color: #718096;
+}
+
+.cancel-delete:hover {
+  background-color: #4a5568;
+  transform: translateY(-1px);
+}
+
+/* Input styles */
+input {
+  padding: 6px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  width: 150px;
+  color: #2d3748;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+/* Animation for expanding/collapsing folders */
+.item-children {
+  margin-left: 28px;
+  border-left: 2px dashed #e2e8f0;
+  padding-left: 16px;
+  margin-top: 4px;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Empty folder state */
+.item-children:empty::before {
+  content: 'Empty folder';
+  display: block;
+  padding: 8px;
+  color: #a0aec0;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Empty state styles */
+.empty-explorer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #f7fafc;
+  border-radius: 8px;
+  border: 2px dashed #e2e8f0;
+  margin: 20px 0;
+}
+
+.empty-explorer p {
+  color: #718096;
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+/* File content preview styles */
+.file-content-preview {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f7fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #4a5568;
+  max-height: 100px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Error message styles */
+.error-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  color: #e53e3e;
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.close-error {
+  background: none;
+  border: none;
+  color: #718096;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-error:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #4a5568;
+}
+
+/* Expand/collapse icon styles */
+.expand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  margin-right: 2px;
+}
+
+.expand-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* File Explorer Component Styles */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.app-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.app-footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: #718096;
+  font-size: 0.875rem;
+}
+
+.app-footer a {
+  color: #4299e1;
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}
+
+/* File Explorer */
+.file-explorer {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.file-explorer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.file-explorer-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #2d3748;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.file-system-container {
+  padding: 1rem;
+  min-height: 300px;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #718096;
+  text-align: center;
+  border: 2px dashed #e2e8f0;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+
+/* File System Item */
+.file-system-item {
+  margin-bottom: 0.25rem;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.item-header:hover {
+  background-color: #f7fafc;
+}
+
+.item-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.expand-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.item-text {
+  cursor: pointer;
+  user-select: none;
+}
+
+.item-name input {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  outline: none;
+  width: 100%;
+  max-width: 200px;
+}
+
+.item-name input:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 1px #4299e1;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+}
+
+.item-children {
+  margin-left: 2rem;
+  border-left: 1px dashed #cbd5e0;
+  padding-left: 0.5rem;
+}
+
+/* Delete Confirmation */
+.delete-confirm {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fff5f5;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #c53030;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* File Content */
+.file-content {
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  margin: 0.5rem 0 0.5rem 2rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.file-content pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Import Form */
+.import-form {
+  padding: 1rem;
+  background-color: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.import-form h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+} 
