@@ -53,7 +53,7 @@ interface UsePaginationReturn {
  */
 interface PaginationDemoState {
     currentPage: number;
-    variant: 'default' | 'compact' | 'simple';
+    variant: PaginationVariant;
     totalPages: number;
     siblingCount: number;
     showFirstLast: boolean;

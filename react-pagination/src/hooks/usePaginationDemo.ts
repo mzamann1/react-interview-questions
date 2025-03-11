@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { UsePaginationDemoReturn } from '../types';
+import { PaginationVariant, UsePaginationDemoReturn } from '../types';
 
 /**
  * Custom hook to manage pagination demo state and logic
@@ -9,7 +9,7 @@ import { UsePaginationDemoReturn } from '../types';
 export function usePaginationDemo(): UsePaginationDemoReturn {
     // State
     const [currentPage, setCurrentPage] = useState(1);
-    const [variant, setVariant] = useState<'default' | 'compact' | 'simple'>('default');
+    const [variant, setVariant] = useState<PaginationVariant>('default');
     const [totalPages, setTotalPages] = useState(10);
     const [siblingCount, setSiblingCount] = useState(1);
     const [showFirstLast, setShowFirstLast] = useState(true);
@@ -20,7 +20,7 @@ export function usePaginationDemo(): UsePaginationDemoReturn {
     }, []);
 
     const handleVariantChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-        setVariant(e.target.value as 'default' | 'compact' | 'simple');
+        setVariant(e.target.value as PaginationVariant);
     }, []);
 
     const handleTotalPagesChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
