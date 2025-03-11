@@ -1,0 +1,21 @@
+/* Custom select styling */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    font-size: 0.7em;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.select-wrapper select {
+    appearance: none;
+    width: 100%;
+    padding-right: 2rem;
+}
